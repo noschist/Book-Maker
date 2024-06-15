@@ -110,9 +110,10 @@
                 "minimizable": false,
                 "title": "Scriptly | Login/Register",
                 "width": 1024,
-                "url": "/onboard",
+                "url": "/login",
                 "label": "login",
-                "center": true
+                "center": true,
+                "decorations": false
             }
         ]
     }

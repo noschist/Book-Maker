@@ -1,14 +1,10 @@
 import type { Config } from "tailwindcss";
 
-interface Keyframes {
-  [key: string]: {
-    [percentage: string]: {
-      opacity: number;
-      transform: string;
-    };
-  };
-}
-
+const defaultTheme = require("tailwindcss/defaultTheme");
+const colors = require("tailwindcss/colors");
+const {
+  default: flattenColorPalette,
+} = require("tailwindcss/lib/util/flattenColorPalette");
 
 const config: Config = {
   content: [
@@ -16,27 +12,28 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: 'class',
+  darkMode: ['class'],
   theme: {
     extend: {
-      animation: {
-        spotlight: "spotlight 2s ease .75s 1 forwards",
-      },
-      keyframes: {
-        spotlight: {
-          '0%': {
-            opacity: '0',
-            transform: "translate(-72%, -62%) scale(0.5)",
-          },
-          '100%': {
-            opacity: '1',
-            transform: "translate(-50%, -40%) scale(1)",
-          },
-        },
+      fontFamily: {
+        inter: ['var(--font-inter)'],
+        quicksand: ['var(--font-quicksand)'],
+        playnl: ['var(--font-playwritenl)']
       }
     },
   },
-  plugins: [],
+  plugins: [addVariablesForColors],
 };
+
+function addVariablesForColors({ addBase, theme }: any) {
+  let allColors = flattenColorPalette(theme("colors"));
+  let newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
+ 
+  addBase({
+    ":root": newVars,
+  });
+}
 
 export default config;

@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Quicksand, Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: '--font-inter' });
+const quicksand = Quicksand({ subsets: ["latin"], variable: '--font-quicksand' });
+const playwritenl = localFont({variable: '--font-playwritenl', src: '../public/fonts/Playwrite-Netherland/PlaywriteNL.ttf' });
 
 export const metadata: Metadata = {
   title: "Scriptly",
@@ -16,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <body className={`${inter.variable} ${quicksand.variable} ${playwritenl.variable}`}>{children}</body>
     </html>
   );
 }
