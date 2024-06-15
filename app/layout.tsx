@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-    <body className={`${inter.variable} ${quicksand.variable} ${playwritenl.variable}`}>{children}</body>
+    <body className={`antialiased ${inter.variable} ${quicksand.variable} ${playwritenl.variable}`}>{children}</body>
     </html>
   );
 }
