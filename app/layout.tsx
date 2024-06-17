@@ -26,7 +26,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`antialiased ${inter.variable} ${quicksand.variable} ${playwritenl.variable} overflow-hidden fixed h-screen w-screen overscroll-x-none`}
+                className={`antialiased ${inter.variable} ${quicksand.variable} ${playwritenl.variable} text-white overflow-hidden fixed h-screen w-screen overscroll-x-none`}
             >
                 {children}
             </body>
