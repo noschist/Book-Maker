@@ -10,11 +10,11 @@ export default function LoginHeader({ isAnimDone }: { isAnimDone: boolean }) {
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 2 }}
+                transition={{ delay: 3 }}
                 data-tauri-drag-region="true"
-                className="w-full h-10 bg-transparent fixed top-0 left-0 z-10 flex p-4 items-center justify-between select-none"
+                className="w-full h-10 bg-transparent fixed top-0 left-0 z-50 flex p-4 items-center justify-between select-none"
             >
-                <p data-tauri-drag-region="true" className=" font-quicksand">
+                <p data-tauri-drag-region="true" className="font-quicksand">
                     Lock Screen
                 </p>
                 <CloseButton close={() => invoke("close_login_window")} />

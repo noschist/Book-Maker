@@ -21,10 +21,10 @@ const logoVariants = {
     },
     animateMoveUp: {
         opacity: 1,
-        scale: 0.8,
-        y: -180,
+        scale: 0.7,
+        y: -210,
         transition: {
-            duration: 1,
+            duration: 1.5,
         },
     },
 };
@@ -46,21 +46,28 @@ export default function LoginScreen() {
     };
 
     return (
-        <div>
+        <div className="relative">
             <LoginHeader isAnimDone={logoAnimationComplete} />
-            <div className="relative bg-gray-950 w-full h-screen flex flex-col items-center justify-center">
-                <motion.h1
-                    className="relative z-10 leading-[normal] select-none font-playnl text-4xl text-transparent bg-clip-text bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50"
-                    initial="initial"
-                    animate={
-                        logoanimate ? "animateMoveUp" : "animateFadeInAndShrink"
-                    }
-                    variants={logoVariants}
-                    onAnimationComplete={handleLogoAnimationComplete}
-                >
-                    Scriptly
-                </motion.h1>
-                <LoginForm />
+            <div className="fixed z-20 top-0 left-0 w-full h-full flex items-center justify-center">
+                <div className="absolute">
+                    <motion.h1
+                        className="leading-[normal] select-none font-playnl text-4xl text-transparent bg-clip-text bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50"
+                        initial="initial"
+                        animate={
+                            logoanimate
+                                ? "animateMoveUp"
+                                : "animateFadeInAndShrink"
+                        }
+                        variants={logoVariants}
+                        onAnimationComplete={handleLogoAnimationComplete}
+                    >
+                        Scriptly
+                    </motion.h1>
+                </div>
+            </div>
+
+            <div className="relative bg-gray-950 w-full h-screen flex items-center justify-center">
+                <LoginForm isAnimDone={logoAnimationComplete} />
             </div>
             <BackgroundBeams />
         </div>
